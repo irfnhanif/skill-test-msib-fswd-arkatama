@@ -18,11 +18,9 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// $createdAt = date("Y-m-d H:i:s");
+// Tambahkan $createAt jika tabel identitas tidak memiliki kolom create_at
+// $createAt = date('Y-m-d H:i:s');
 
 $sql = "INSERT INTO identity (name, age, city)
 VALUES ('$name', '$age', '$city')";
 
-if (!$conn->query($sql) === TRUE) {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
