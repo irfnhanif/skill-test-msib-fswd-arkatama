@@ -1,7 +1,7 @@
 <?php
 $data = readline("Masukkan data: ");
 
-preg_match('/(?P<name>.*) (?P<age>\d+)(?: thn| th| tahun| THN| TH| TAHUN)? (?P<city>.*)/', $data, $matches);
+preg_match('/(?P<name>.*) (?P<age>\d+)(?: ?THN| ?TH| ?TAHUN)? (?P<city>.*)/', $data, $matches);
 
 $name = strtoupper($matches['name']);
 $age = $matches['age'];
@@ -24,3 +24,10 @@ if ($conn->connect_error) {
 $sql = "INSERT INTO identity (name, age, city)
 VALUES ('$name', '$age', '$city')";
 
+if ($conn->query($sql) === TRUE) {
+    echo "New record created successfully";
+} else {
+    echo "Error: " . $sql . " : " . $conn->error;
+}
+
+$conn->close();
