@@ -21,8 +21,7 @@ if ($conn->connect_error) {
 // Tambahkan $createAt jika tabel identitas tidak memiliki kolom create_at
 // $createAt = date('Y-m-d H:i:s');
 
-$sql = "INSERT INTO identity (name, age, city)
-VALUES ('$name', '$age', '$city')";
+$sql = "INSERT INTO identity (name, age, city) VALUES ('$name', '$age', '$city')";
 
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";
